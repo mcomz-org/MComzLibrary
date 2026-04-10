@@ -36,6 +36,22 @@ jobs:
           chmod +x scripts/download-sources.sh
           ./scripts/download-sources.sh
 
+      - name: Report download failures
+        if: always()
+        run: |
+          if [[ -f download-failures.txt ]]; then
+            echo "## Download failures" >> "$GITHUB_STEP_SUMMARY"
+            echo "The following sources could not be downloaded and are missing from this build:" >> "$GITHUB_STEP_SUMMARY"
+            echo "" >> "$GITHUB_STEP_SUMMARY"
+            while IFS= read -r line; do
+              echo "- $line" >> "$GITHUB_STEP_SUMMARY"
+            done < download-failures.txt
+            echo "" >> "$GITHUB_STEP_SUMMARY"
+            echo "Fix the URLs in \`scripts/download-sources.sh\` and re-run the workflow." >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "## All sources downloaded successfully" >> "$GITHUB_STEP_SUMMARY"
+          fi
+
       - name: Build ZIM files
         run: |
           chmod +x scripts/build-zims.sh

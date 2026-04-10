@@ -4,37 +4,40 @@
 # Usage: ./scripts/download-sources.sh [--force]
 #
 # Idempotent: skips files that already exist unless --force is passed.
-# Failed downloads print a WARN and leave no partial file — run again to retry.
-#
-# TODO markers indicate URLs that need manual verification before the first
-# production run. Test each marked URL in a browser first.
+# Failed downloads are skipped cleanly — the build proceeds with whatever
+# was successfully downloaded, and failures are written to download-failures.txt
+# for review (and surfaced in the GitHub Actions job summary).
 
-set -euo pipefail
+set -uo pipefail
 
 SOURCES="${MCOMZ_SOURCES_DIR:-sources}"
 FORCE="${1:-}"
+FAILURES=()
 
 mkdir -p \
   "$SOURCES/spiritual" \
   "$SOURCES/literature" \
   "$SOURCES/survival"
 
-# Download helper — skips if file exists, warns on failure, never leaves partial files.
+# Download helper — skips if file exists, records failures, never leaves partial files.
 dl() {
-  local dest="$1" url="$2"
-  [[ "$FORCE" != "--force" && -f "$dest" ]] && { echo "  skip  $dest"; return; }
-  echo "  fetch $dest"
-  wget -q --show-progress -O "$dest.tmp" "$url" 2>&1 && mv "$dest.tmp" "$dest" || {
-    echo "  WARN: failed — $url" >&2
+  local dest="$1" url="$2" label="${3:-}"
+  [[ "$FORCE" != "--force" && -f "$dest" ]] && { echo "  skip  $(basename "$dest")"; return; }
+  echo "  fetch $(basename "$dest")"
+  if wget -q --show-progress -O "$dest.tmp" "$url" 2>&1; then
+    mv "$dest.tmp" "$dest"
+  else
     rm -f "$dest.tmp"
-  }
+    local note="${label:+ — ${label}}"
+    FAILURES+=("$(basename "$dest")${note}")
+    echo "  FAIL  $(basename "$dest") — $url" >&2
+  fi
 }
 
 # ── SPIRITUAL ─────────────────────────────────────────────────────────────────
 echo "=== Spiritual ==="
 
 # Berean Standard Bible — CC0 (public domain dedication 30 Apr 2023)
-# TODO: verify download URL; check https://bereanbible.com/bsb.epub works
 dl "$SOURCES/spiritual/berean-standard-bible.epub" \
    "https://bereanbible.com/bsb.epub"
 
@@ -58,7 +61,8 @@ dl "$SOURCES/spiritual/tao-te-ching-legge.html" \
 # JPS Tanakh 1917 — PG #2961
 # TODO: verify PG #2961 is the full JPS 1917 Tanakh (Holy Scriptures)
 dl "$SOURCES/spiritual/tanakh-jps-1917.html" \
-   "https://www.gutenberg.org/files/2961/2961-h/2961-h.htm"
+   "https://www.gutenberg.org/files/2961/2961-h/2961-h.htm" \
+   "TODO: verify PG #2961 is the full JPS 1917 Tanakh"
 
 # ── LITERATURE ────────────────────────────────────────────────────────────────
 echo "=== Literature ==="
@@ -72,9 +76,10 @@ dl "$SOURCES/literature/sherlock-holmes.epub" \
    "https://standardebooks.org/ebooks/arthur-conan-doyle/the-adventures-of-sherlock-holmes/downloads/arthur-conan-doyle_the-adventures-of-sherlock-holmes.epub"
 
 # The Count of Monte Cristo (Dumas) — Standard Ebooks
-# TODO: verify translator slug — SE may use a specific translator name in the URL
+# TODO: verify translator slug — SE may use a different name in the URL
 dl "$SOURCES/literature/count-of-monte-cristo.epub" \
-   "https://standardebooks.org/ebooks/alexandre-dumas/the-count-of-monte-cristo/anonymous/downloads/alexandre-dumas_the-count-of-monte-cristo_anonymous.epub"
+   "https://standardebooks.org/ebooks/alexandre-dumas/the-count-of-monte-cristo/anonymous/downloads/alexandre-dumas_the-count-of-monte-cristo_anonymous.epub" \
+   "TODO: verify SE translator slug"
 
 # Pride and Prejudice (Jane Austen) — Standard Ebooks
 dl "$SOURCES/literature/pride-and-prejudice.epub" \
@@ -101,10 +106,10 @@ dl "$SOURCES/literature/alices-adventures-in-wonderland.epub" \
    "https://standardebooks.org/ebooks/lewis-carroll/alices-adventures-in-wonderland/downloads/lewis-carroll_alices-adventures-in-wonderland.epub"
 
 # Winnie-the-Pooh (A.A. Milne, 1926) — entered US PD 2022
-# TODO: SE may not have this yet; verify https://standardebooks.org/ebooks/a-a-milne/winnie-the-pooh
-# Fallback: search Project Gutenberg for the 1926 text
+# TODO: SE may not have this yet; check https://standardebooks.org/ebooks/a-a-milne/winnie-the-pooh
 dl "$SOURCES/literature/winnie-the-pooh.epub" \
-   "https://standardebooks.org/ebooks/a-a-milne/winnie-the-pooh/downloads/a-a-milne_winnie-the-pooh.epub"
+   "https://standardebooks.org/ebooks/a-a-milne/winnie-the-pooh/downloads/a-a-milne_winnie-the-pooh.epub" \
+   "TODO: verify SE has Winnie-the-Pooh (entered US PD 2022)"
 
 # Aesop's Fables (Jacobs trans.) — PG #21
 dl "$SOURCES/literature/aesops-fables.html" \
@@ -130,17 +135,21 @@ dl "$SOURCES/survival/fm-21-76-survival.pdf" \
 # AFH 10-644 Survival (US Air Force) — Public Domain (US Gov)
 # TODO: verify archive.org ID for AFH 10-644
 dl "$SOURCES/survival/afh-10-644-survival.pdf" \
-   "https://archive.org/download/AFH10-644/AFH10-644.pdf"
+   "https://archive.org/download/AFH10-644/AFH10-644.pdf" \
+   "TODO: verify archive.org ID"
 
 # TC 3-25.26 Map Reading and Land Navigation (US Army) — Public Domain (US Gov)
 # TODO: verify archive.org ID
 dl "$SOURCES/survival/tc-3-25-26-map-reading.pdf" \
-   "https://archive.org/download/TC3-25.26/TC3-25.26.pdf"
+   "https://archive.org/download/TC3-25.26/TC3-25.26.pdf" \
+   "TODO: verify archive.org ID"
 
 # SOF Medical Handbook (US DoD) — Public Domain (US Gov)
-# TODO: verify archive.org ID — search "Special Operations Forces Medical Handbook"
+# Known broken: https://archive.org/download/SOFMedicalHandbook/SOF%20Medical%20Handbook.pdf
+# TODO: find working URL — search archive.org for "Special Operations Forces Medical Handbook"
 dl "$SOURCES/survival/sof-medical-handbook.pdf" \
-   "https://archive.org/download/SOFMedicalHandbook/SOF%20Medical%20Handbook.pdf"
+   "https://archive.org/search?query=special+operations+forces+medical+handbook" \
+   "BROKEN URL — needs replacement; search archive.org for SOF Medical Handbook"
 
 # Are You Ready? (US FEMA) — Public Domain (US Gov)
 dl "$SOURCES/survival/fema-are-you-ready.pdf" \
@@ -149,47 +158,52 @@ dl "$SOURCES/survival/fema-are-you-ready.pdf" \
 # CERT Basic Training Participant Manual (US FEMA) — Public Domain (US Gov)
 # TODO: FEMA changes these URLs frequently; verify current URL at community.fema.gov
 dl "$SOURCES/survival/fema-cert-basic-training.pdf" \
-   "https://community.fema.gov/ProtectiveActions/api/download?Id=a1Bt0000000TNJHEA4&lang=en"
+   "https://community.fema.gov/ProtectiveActions/api/download?Id=a1Bt0000000TNJHEA4&lang=en" \
+   "TODO: FEMA URL changes frequently — verify at community.fema.gov"
 
 # MCRP 3-40.3C Antenna Handbook (USMC) — Public Domain (US Gov)
 # TODO: verify archive.org ID
 dl "$SOURCES/survival/mcrp-3-40-3c-antenna-handbook.pdf" \
-   "https://archive.org/download/MCRP3-40.3C/MCRP3-40.3C.pdf"
+   "https://archive.org/download/MCRP3-40.3C/MCRP3-40.3C.pdf" \
+   "TODO: verify archive.org ID"
 
 # Boatswain's Mate Manual (US Navy) — Public Domain (US Gov)
-# TODO: verify URL — multiple editions exist on archive.org
+# TODO: verify archive.org ID — multiple editions exist
 dl "$SOURCES/survival/boatswains-mate-manual.pdf" \
-   "https://archive.org/download/NavyBoatswainsMateManual/NavyBoatswainsMateManual.pdf"
+   "https://archive.org/download/NavyBoatswainsMateManual/NavyBoatswainsMateManual.pdf" \
+   "TODO: verify archive.org ID"
 
 # Basic Machines and How They Work (US Navy NRTC) — Public Domain (US Gov)
 dl "$SOURCES/survival/basic-machines-navy.pdf" \
    "https://archive.org/download/basic_machines_and_how_they_work/basic_machines_and_how_they_work.pdf"
 
 # NEETS Modules 1–4 and 18 (US Navy) — Public Domain (US Gov)
-# TODO: verify archive.org ID pattern — NEETS has 24 modules; we include selected set
+# TODO: verify archive.org ID pattern
 for module in 01 02 03 04 18; do
   dl "$SOURCES/survival/neets-module-${module}.pdf" \
-     "https://archive.org/download/NEETS_Module_${module}/NEETS_Module_${module}.pdf"
+     "https://archive.org/download/NEETS_Module_${module}/NEETS_Module_${module}.pdf" \
+     "TODO: verify archive.org ID pattern for NEETS modules"
 done
 
 # Excreta Disposal for Rural Areas (Wagner & Lanoix, WHO 1958) — Public Domain
-# WHO publications from 1958 are in the public domain (copyright expired).
 # TODO: verify WHO IRIS URL
 dl "$SOURCES/survival/excreta-disposal-wagner-lanoix.pdf" \
-   "https://apps.who.int/iris/bitstream/handle/10665/41687/WHO_MONO_39.pdf"
+   "https://apps.who.int/iris/bitstream/handle/10665/41687/WHO_MONO_39.pdf" \
+   "TODO: verify WHO IRIS URL"
 
-# On the Mode of Communication of Cholera (John Snow, 1855) — Public Domain
-# TODO: verify PG ID — searching for "Snow cholera" at gutenberg.org
-dl "$SOURCES/survival/cholera-john-snow.html" \
-   "https://www.gutenberg.org/files/28507/28507-h/28507-h.htm"
-
-# CD3WD — see RATIONALE.md. Selected PDFs must be downloaded manually.
-# The CD3WD collection is available at https://cd3wd.com/ and archive.org
+# CD3WD — Selected PDFs must be downloaded manually (see RATIONALE.md).
 # Place chosen PDFs in sources/survival/ with prefix cd3wd- before running build.
-echo ""
-echo "  NOTE: CD3WD PDFs require manual selection."
-echo "        Download from https://cd3wd.com/ and place in $SOURCES/survival/"
-echo "        Use filenames starting with 'cd3wd-' (e.g. cd3wd-water-purification.pdf)"
+echo "  note  CD3WD: place manually selected PDFs in $SOURCES/survival/ as cd3wd-*.pdf"
 
+# ── Summary ───────────────────────────────────────────────────────────────────
 echo ""
-echo "=== Download complete. Check WARN lines above for failures. ==="
+if [[ ${#FAILURES[@]} -eq 0 ]]; then
+  echo "=== All downloads succeeded ==="
+  rm -f download-failures.txt
+else
+  echo "=== ${#FAILURES[@]} download(s) failed ==="
+  printf '%s\n' "${FAILURES[@]}" | tee download-failures.txt
+  echo ""
+  echo "Build will proceed with successfully downloaded files."
+  echo "Fix URLs in scripts/download-sources.sh and re-run, or run with --force."
+fi
