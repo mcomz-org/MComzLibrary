@@ -160,11 +160,13 @@ All literature items are **Public Domain** via Standard Ebooks or Project Gutenb
 |---|---|---|---|
 | 🟡 **SEEK PERMISSION** | **Where There Is No Doctor** *(Hesperian)* | Hesperian Open Copyright (NC; digital distribution requires written permission) | Not in core ZIM (NC). Contact permissions@hesperian.org. Users strongly encouraged to add. |
 | 🟡 **SEEK PERMISSION** | **Where There Is No Dentist** *(Hesperian)* | Hesperian Open Copyright (same) | Not in core ZIM (NC). Same contact. |
+| 🟡 **SEEK PERMISSION** | **Where Women Have No Doctor** *(Hesperian)* | Hesperian Open Copyright (same) | Not in core ZIM (NC). Clinical companion to Where There Is No Doctor, covering women's health in resource-limited settings. Same contact. |
 | 🟡 **SEEK PERMISSION** | **A Book for Midwives** *(Hesperian)* | Hesperian Open Copyright (same) | Not in core ZIM (NC). Same contact. |
 | 🟡 **SEEK PERMISSION** | **Health Actions for Women** *(Hesperian)* | Hesperian Open Copyright (same) | Not in core ZIM (NC). Same contact. |
 | 🟢 **CORE** | **SOF Medical Handbook** *(US DoD)* | Public Domain (US Gov) | Trauma stabilisation and clinical dosages. Note: assumes relatively rapid medevac access — gap exists for prolonged remote care scenarios (5+ days). |
 | 🟡 **SEEK PERMISSION** | **WHO Guidelines for Drinking-Water Quality** *(4th ed., WHO)* | CC BY-NC-SA 3.0 IGO | Not in core ZIM (NC). Essential water safety reference. Contact WHO copyright for permission. |
 | 🟡 **SEEK PERMISSION** | **Ship Captain's Medical Guide** *(UK MCA, 22nd ed.)* | OGL v3.0 (verify — 22nd ed. was on GOV.UK before withdrawal) | The 23rd/24th editions contain third-party IP and are published by TSO, which explicitly prohibits redistribution. The older 22nd edition was previously freely available under OGL on GOV.UK. **Action:** Source an archived 22nd edition and verify its OGL status. If confirmed, include. This fills a critical gap: the SOF Handbook assumes medevac access; the SCMG is designed for prolonged care at sea without medical professionals. |
+| 🟢 **DOWNLOADED** | **WikiMed Mini (English)** | CC BY-SA 4.0 | ~400 MB. Plain-language first aid and drug information. Downloaded by the MComzOS Ansible playbook from Kiwix's library — not built by this project. |
 | 🟡 **SEPARATE ZIM** | **WikiMed (English, full)** | CC BY-SA 4.0 | ~2.2 GB. Clinical references for trained professionals. Available from Kiwix. |
 
 ### Mental Health — `MComz-Survival.zim`
@@ -225,7 +227,7 @@ All literature items are **Public Domain** via Standard Ebooks or Project Gutenb
 | 🟡 **SEEK PERMISSION** | **Oxfam WASH Technical Briefing Notes** (selected set) | Verify Oxfam terms | Not in core ZIM pending licence check. Practical field guides on water treatment, hand-dug wells, spring protection, drainage, sanitation. Available as free PDFs from oxfamwash.org. **Action:** Contact Oxfam to verify redistribution terms for bundling. |
 | 🟢 **CORE** | **On the Mode of Communication of Cholera** *(John Snow, 1855)* | Public Domain (copyright expired) | Historic but practically useful text on waterborne disease transmission. Foundational to understanding why water quality matters. |
 | 🟢 **CORE** | **Excreta Disposal for Rural Areas and Small Communities** *(Wagner & Lanoix, WHO, 1958)* | Public Domain (copyright expired, 1958 WHO publication) | Practical sanitation guidance for rural communities. Verify PD status given WHO publication. |
-| 🟢 **CORE** | **CD3WD selected content** (water purification, basic sanitation, basic construction) | Public Domain / various open | Selected PDFs from CD3WD collection, converted to HTML. Cherry-picked for the most critical topics. |
+| 🟢 **CORE** | **CD3WD selected content** (water purification, basic sanitation, basic construction) | Public Domain / various open | Selected PDFs from CD3WD collection, bundled as-is into the ZIM as downloadable PDFs. The collection consists of scanned 1980s–90s technical documents — programmatic PDF-to-HTML conversion produces unreadable output and manual conversion is not feasible. Kiwix serves non-HTML files as downloads; users open them in their device's PDF viewer. |
 
 *Martin's full water engineering bibliography (7 Zotero collections, ~150 items) has been assessed. Commercial textbooks (Metcalf & Eddy, Twort's, White's Handbook, etc.) are excluded as copyrighted. The WHO publications, Sphere Handbook, and Oxfam WASH resources are the highest-value candidates pending licence verification. See Overnight Instructions for the detailed Zotero workflow.*
 
@@ -283,7 +285,7 @@ All literature items are **Public Domain** via Standard Ebooks or Project Gutenb
 
 2. **Kiwix library hosting for small custom ZIMs:** Kiwix hosts ZIMs of any size. Regional foraging ZIMs and MComzLibrary ZIMs can be submitted to Kiwix's catalog.
 
-3. **CD3WD integration:** Selected CD3WD PDFs should be converted to HTML and included directly in `MComz-Survival.zim` rather than maintained as a separate format. This avoids building a second reader alongside Kiwix.
+3. **CD3WD integration:** Selected CD3WD PDFs will be bundled directly into `MComz-Survival.zim` as downloadable PDF files, without conversion. The collection consists of scanned 1980s–90s documents; automated PDF-to-HTML produces unreadable garbage and manual conversion is not feasible at scale. Kiwix serves bundled non-HTML files as downloads, so users open them in their device's native PDF viewer.
 
 4. **NC licence policy (decided):** NC-licensed items (Hesperian, WHO GDWQ, PFA, etc.) are **excluded from the core ZIMs** to keep the library fully open and freely shareable. They are listed as strongly recommended additions. We are actively seeking unrestricted permission from each rights holder — if granted, the item moves to 🟢 CORE. This means our three custom ZIMs carry no NC-SA inheritance and can be freely redistributed, remixed, and built upon by anyone.
 
@@ -293,7 +295,7 @@ All literature items are **Public Domain** via Standard Ebooks or Project Gutenb
 
 | # | Rights Holder | Items | Contact | Request |
 |---|---|---|---|---|
-| 1 | **Hesperian Health Guides** | Where There Is No Doctor, Where There Is No Dentist, A Book for Midwives, Health Actions for Women | permissions@hesperian.org | Digital distribution in an offline OS ZIM file (free download + potential hardware). Emphasise humanitarian/non-profit mission. |
+| 1 | **Hesperian Health Guides** | Where There Is No Doctor, Where There Is No Dentist, Where Women Have No Doctor, A Book for Midwives, Health Actions for Women | permissions@hesperian.org | Digital distribution in an offline OS ZIM file (free download + potential hardware). Emphasise humanitarian/non-profit mission. |
 | 2 | **Buddhist Publication Society** | The Dhammapada (Buddharakkhita) | bps@bps.lk | Bundling in free OS image and potentially hardware. |
 | 3 | **SikhNet / Dr. Sant Singh Khalsa** | Guru Granth Sahib (Khalsa translation) | sikhnet.com contact | Written permission for OS bundling. |
 | 4 | **NCTSN** | PFA Field Operations Guide | mbrymer@mednet.ucla.edu | Confirm bundling in free/hardware OS is acceptable. |
@@ -340,3 +342,4 @@ All literature items are **Public Domain** via Standard Ebooks or Project Gutenb
 |---|---|---|
 | v0.0.1 | 2026-04-10 | Initial draft produced with Gemini 2.5 Pro and Grok review. |
 | v0.0.2 | 2026-04-10 | Comprehensive revision incorporating review by ChatGPT, Le Chat (Mistral), DeepSeek, Perplexity, Copilot, and Claude. Licence verification via web research. NC-licensed items policy clarified. Ship Captain's Medical Guide 22nd ed. investigation added. Hesperian licence corrected from "CC BY-NC-SA 4.0" to "Hesperian Open Copyright". Berean Bible confirmed Public Domain. Yusuf Ali Quran clarified to 1934 text. Licence definitions standardised and moved to appendix. Disclaimers added. Category naming standardised. "Morale management" replaced with "psychological resilience". Status labels made self-explanatory. ZIM architecture clarified (three core ZIMs + user-added). Regional ZIM strategy added. Format strategy (HTML-first) documented. Thematic dashboard navigation noted. Geographic balance statement added. Translation/localisation invitation added. Side-by-side translation goal added. Arabian Nights and Scouting for Boys added. WikiMed Mini moved to CORE. CD3WD integration approach clarified. Mathematical tables excluded. Action Items table with contacts. Gaps and future work section. NC licence implications for ZIM licensing noted. Overnight refinement instructions produced. |
+| v0.0.3 | 2026-04-10 | Three fixes from Gemini 2.5 Pro review: WikiMed Mini added to Medical table as 🟢 DOWNLOADED (was described in prose but absent from table). CD3WD strategy corrected from "convert to HTML" to "bundle as-is PDF downloads" (scanned 1980s–90s docs; automated conversion produces unreadable output). Where Women Have No Doctor (Hesperian) added to Medical table and Action Items (clinical companion to Where There Is No Doctor; distinct from Health Actions for Women). |
