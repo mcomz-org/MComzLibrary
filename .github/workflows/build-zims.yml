@@ -1,0 +1,79 @@
+name: Build ZIM Library
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 2 1 * *'      # 2am UTC on the 1st of each month
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/**'
+      - 'docs/RATIONALE.md'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y zim-tools pandoc wget unzip
+
+      - name: Cache downloaded sources
+        uses: actions/cache@v4
+        with:
+          path: sources/
+          key: sources-${{ hashFiles('scripts/download-sources.sh') }}
+          restore-keys: sources-
+
+      - name: Download source texts
+        run: |
+          chmod +x scripts/download-sources.sh
+          ./scripts/download-sources.sh
+
+      - name: Build ZIM files
+        run: |
+          chmod +x scripts/build-zims.sh
+          ./scripts/build-zims.sh
+
+      - name: Get build date
+        id: date
+        run: echo "tag=v$(date +'%Y.%m.%d')" >> "$GITHUB_OUTPUT"
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: "${{ steps.date.outputs.tag }}"
+          name: "MComzLibrary ${{ steps.date.outputs.tag }}"
+          prerelease: true
+          fail_on_unmatched_files: false
+          body: |
+            Automated ZIM library build.
+
+            ## Files
+            | ZIM | Contents |
+            |---|---|
+            | `MComz-Spiritual.zim` | Religious and philosophical texts |
+            | `MComz-Literature.zim` | Classic literature |
+            | `MComz-Survival.zim` | Medical, survival, civil defence, communications |
+
+            ## Adding to MComzOS
+            The MComzOS Ansible playbook downloads these automatically.
+            To add manually:
+            ```
+            sudo cp MComz-*.zim /var/lib/kiwix/
+            sudo kiwix-manage /var/lib/kiwix/library.xml add /var/lib/kiwix/MComz-Spiritual.zim
+            sudo kiwix-manage /var/lib/kiwix/library.xml add /var/lib/kiwix/MComz-Literature.zim
+            sudo kiwix-manage /var/lib/kiwix/library.xml add /var/lib/kiwix/MComz-Survival.zim
+            sudo systemctl restart kiwix-serve
+            ```
+
+            ## Licence
+            All content is public domain or explicitly licensed for free redistribution.
+            See [RATIONALE.md](https://github.com/mcomz-org/MComzLibrary/blob/main/docs/RATIONALE.md).
+          files: dist/*.zim
