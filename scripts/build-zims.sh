@@ -164,13 +164,32 @@ build_zim() {
   # Generate index
   generate_index "$build_dir" "$title" "$description"
 
+  # Generate a minimal 48x48 PNG illustration (required by zimwriterfs)
+  python3 - "$build_dir/illustration.png" <<'PYEOF'
+import struct, zlib, sys
+def make_png(path, r, g, b):
+    def chunk(t, d):
+        return struct.pack('>I', len(d)) + t + d + struct.pack('>I', zlib.crc32(t + d) & 0xffffffff)
+    row = bytes([0]) + bytes([r, g, b] * 48)
+    data = zlib.compress(row * 48)
+    open(path, 'wb').write(
+        b'\x89PNG\r\n\x1a\n'
+        + chunk(b'IHDR', struct.pack('>IIBBBBB', 48, 48, 8, 2, 0, 0, 0))
+        + chunk(b'IDAT', data)
+        + chunk(b'IEND', b'')
+    )
+make_png(sys.argv[1], 26, 82, 118)   # MComz blue
+PYEOF
+
   # Compile ZIM
   echo "  Compiling ZIM..."
   zimwriterfs \
     --welcome=index.html \
+    --illustration=illustration.png \
     --language=eng \
     --title="$title" \
     --description="$description" \
+    --longDescription="$description" \
     --creator="MComzLibrary contributors" \
     --publisher="mcomz-org" \
     --name="mcomz_en_${category}" \
