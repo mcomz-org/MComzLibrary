@@ -32,10 +32,14 @@ epub_to_html() {
   local epub="$1" dest_html="$2"
   [[ -f "$dest_html" ]] && { echo "  skip  $(basename "$dest_html")"; return; }
   echo "  conv  $(basename "$epub")"
+  # --embed-resources was introduced in pandoc 2.19; fall back to --self-contained
+  local embed_flag="--embed-resources"
+  pandoc --embed-resources /dev/null -o /dev/null 2>/dev/null || embed_flag="--self-contained"
+
   pandoc "$epub" \
     --to=html5 \
     --standalone \
-    --embed-resources \
+    "$embed_flag" \
     --metadata title="$(basename "$epub" .epub | tr '-' ' ')" \
     -o "$dest_html" 2>/dev/null || {
       echo "  WARN: pandoc failed for $epub" >&2
