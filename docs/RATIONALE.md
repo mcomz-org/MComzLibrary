@@ -18,7 +18,7 @@ MComzOS includes exactly three ZIM files, built by the MComzLibrary project (`MC
 
 | ZIM file | Contents | Estimated size |
 |---|---|---|
-| `MComz-Spiritual.zim` | Religious and philosophical texts | TBD |
+| `MComz-Scriptures.zim` | Religious and philosophical texts | TBD |
 | `MComz-Literature.zim` | Classic literature for morale and education | TBD |
 | `MComz-Survival.zim` | Medical, mental health, survival, civil defence, engineering, communications — everything practical | TBD |
 
@@ -88,7 +88,7 @@ We explicitly invite contributors who would like to help produce other-language 
 - The Hesperian medical books have been translated into 80+ languages
 - US military manuals have some translated editions
 
-The recommended approach is to build **separate ZIMs per language** (e.g. `MComz-Spiritual-ES.zim`, `MComz-Survival-FR.zim`) rather than bundling multiple languages into one ZIM, to keep individual file sizes manageable.
+The recommended approach is to build **separate ZIMs per language** (e.g. `MComz-Scriptures-ES.zim`, `MComz-Survival-FR.zim`) rather than bundling multiple languages into one ZIM, to keep individual file sizes manageable.
 
 If you would like to contribute a translation or localised ZIM, please open an issue on the MComzLibrary GitHub repository.
 
@@ -119,7 +119,7 @@ This is a stretch goal for v1.0 of the ZIMs, not a blocker for initial compilati
 
 ## The Library
 
-### Spiritual — `MComz-Spiritual.zim`
+### Spiritual — `MComz-Scriptures.zim`
 
 | Status | Title & Author | Licence | Notes |
 |---|---|---|---|

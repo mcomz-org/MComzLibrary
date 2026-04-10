@@ -8,7 +8,7 @@ Three ZIM files containing freely redistributable knowledge for communities with
 
 | ZIM | Contents |
 |---|---|
-| `MComz-Spiritual.zim` | Religious and philosophical texts from seven major world traditions |
+| `MComz-Scriptures.zim` | Scriptures and philosophical texts from seven major world traditions |
 | `MComz-Literature.zim` | Classic literature for morale, education, and younger readers |
 | `MComz-Survival.zim` | Medical, survival, civil defence, engineering, communications, water & sanitation |
 

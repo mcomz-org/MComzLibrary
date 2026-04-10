@@ -184,8 +184,8 @@ build_zim() {
 
 # ── Build all three ZIMs ──────────────────────────────────────────────────────
 
-build_zim "spiritual" "MComz-Spiritual" \
-  "MComz Spiritual Texts" \
+build_zim "spiritual" "MComz-Scriptures" \
+  "MComz Scriptures" \
   "Religious and philosophical texts from seven major world traditions"
 
 build_zim "literature" "MComz-Literature" \
