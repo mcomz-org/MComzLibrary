@@ -120,6 +120,31 @@ dl "$SOURCES/literature/arabian-nights-lang.html" \
 dl "$SOURCES/literature/scouting-for-boys.html" \
    "https://www.gutenberg.org/files/65993/65993-h/65993-h.htm"
 
+# Rubáiyát of Omar Khayyám (FitzGerald, 1859) — PG #246
+dl "$SOURCES/literature/rubaiyat-of-omar-khayyam.html" \
+   "https://www.gutenberg.org/cache/epub/246/pg246-images.html"
+
+# The Art of War (Sun Tzu, Lionel Giles trans., 1910) — Standard Ebooks
+dl "$SOURCES/literature/the-art-of-war.epub" \
+   "https://standardebooks.org/ebooks/sun-tzu/the-art-of-war/lionel-giles/downloads/sun-tzu_the-art-of-war_lionel-giles.epub"
+
+# Shakuntala (Kalidasa, Arthur W. Ryder trans.) — PG #16659
+dl "$SOURCES/literature/shakuntala.html" \
+   "https://www.gutenberg.org/cache/epub/16659/pg16659-images.html"
+
+# 170 Chinese Poems (Arthur Waley, 1918) — PG #42290
+dl "$SOURCES/literature/170-chinese-poems.html" \
+   "https://www.gutenberg.org/cache/epub/42290/pg42290-images.html"
+
+# West African Folk Tales (Barker & Sinclair, 1917) — PG #66923
+dl "$SOURCES/literature/west-african-folk-tales.html" \
+   "https://www.gutenberg.org/cache/epub/66923/pg66923-images.html"
+
+# Panchatantra (Arthur W. Ryder trans., 1925) — PD in US since 2021
+# TODO: URL not yet confirmed — not found on PG; needs archive.org search
+# dl "$SOURCES/literature/panchatantra.html" \
+#    "TODO"
+
 # ── SURVIVAL / MEDICAL / REFERENCE ───────────────────────────────────────────
 # Military manuals and medical references are served as PDFs (see RATIONALE.md —
 # these are scanned documents; HTML conversion produces unreadable output).
@@ -170,9 +195,41 @@ dl "$SOURCES/survival/neets-module-03.pdf" "https://maritime.org/doc/neets/mod03
 dl "$SOURCES/survival/neets-module-04.pdf" "https://maritime.org/doc/neets/mod04.pdf"
 dl "$SOURCES/survival/neets-module-18.pdf" "https://maritime.org/doc/neets/mod18.pdf"
 
-# Excreta Disposal for Rural Areas (Wagner & Lanoix, WHO 1958) — Public Domain
-dl "$SOURCES/survival/excreta-disposal-wagner-lanoix.pdf" \
-   "https://apps.who.int/iris/bitstream/handle/10665/41687/WHO_MONO_39.pdf"
+# FM 4-25.11 First Aid (US Army, 2002) — Public Domain (US Gov)
+# Comprehensive illustrated first aid; most chapters fully applicable to civilians
+dl "$SOURCES/survival/fm-4-25-11-first-aid.pdf" \
+   "https://archive.org/download/FM4-25.11/FM4-25.11.pdf"
+
+# The Ship's Medicine Chest and Medical Aid at Sea (US PHS, 2003) — Public Domain (US Gov)
+# Prolonged medical care for non-doctors — fills the gap between first aid and the SOF Handbook
+dl "$SOURCES/survival/ships-medicine-chest.pdf" \
+   "https://archive.org/download/gov.law.usphs.ships.2003/usphs.ships.2003.pdf"
+
+# Ship Captain's Medical Guide 22nd ed. (UK MCA/HMSO, 1999) — Crown Copyright, OGL v3.0
+# Was published on GOV.UK under OGL; OGL is perpetual and irrevocable. Complements Ship's Medicine Chest.
+# TODO: URL not yet confirmed — archived 22nd ed. PDF needs to be located
+# dl "$SOURCES/survival/ship-captains-medical-guide-22nd.pdf" \
+#    "TODO"
+
+# EPA Emergency Disinfection of Drinking Water (US EPA) — Public Domain (US Gov)
+# Two-page quick reference covering bleach, calcium hypochlorite, and iodine disinfection methods
+dl "$SOURCES/survival/epa-emergency-disinfection.pdf" \
+   "https://www.epa.gov/sites/default/files/2017-09/documents/emergency_disinfection_of_drinking_water_sept2017.pdf"
+
+# CDC Making Water Safe in an Emergency — Public Domain (US Gov)
+# TODO: URL not yet confirmed — CDC PDF URL needs verification
+# dl "$SOURCES/survival/cdc-making-water-safe.pdf" \
+#    "TODO"
+
+# HSE INDG347 Basic First Aid at Work (UK HSE) — Crown Copyright / OGL v3.0
+# Two-page quick-reference card: CPR, bleeding, burns, fractures
+dl "$SOURCES/survival/hse-indg347-first-aid.pdf" \
+   "https://www.hse.gov.uk/pubns/indg347.pdf"
+
+# USDA Complete Guide to Home Canning (2015 rev.) — Public Domain (US Gov)
+# TODO: URL not yet confirmed — NCHFP page did not reveal direct PDF download URLs
+# dl "$SOURCES/survival/usda-complete-guide-canning.pdf" \
+#    "TODO"
 
 # CD3WD — Selected PDFs must be downloaded manually (see RATIONALE.md).
 # Place chosen PDFs in sources/survival/ with prefix cd3wd- before running build.

@@ -1,4 +1,4 @@
-# MComzOS Offline Library Rationale — v0.0.2
+# MComzOS Offline Library Rationale — v0.0.4
 
 ## Purpose
 
@@ -152,7 +152,23 @@ All literature items are **Public Domain** via Standard Ebooks or Project Gutenb
 | 🟢 **CORE** | **Aesop's Fables** | Greek (PD English trans.) | All ages. |
 | 🟢 **CORE** | **The Arabian Nights** *(Andrew Lang, 1898)* | Middle Eastern (PD English) | Non-Western classic. Accessible, entertaining retelling. Project Gutenberg. |
 | 🟢 **CORE** | **Scouting for Boys** *(Robert Baden-Powell, 1908)* | British | Public Domain (expired 31 Dec 2011). Project Gutenberg #65993. Practical outdoor skills: fire, shelter, first aid, knots, signalling. British origin. |
+| 🟢 **CORE** | **Rubáiyát of Omar Khayyám** *(Edward FitzGerald trans., 1859)* | Persian (PD English) | ~20 pages. Musical, quotable existential poetry. "The Moving Finger writes; and, having writ, / Moves on." Comparable to Meditations in philosophical weight. PG #246. |
+| 🟢 **CORE** | **The Art of War** *(Sun Tzu, Lionel Giles trans., 1910)* | Chinese (PD English) | Standard Ebooks. Short (~13,000 words), aphoristic strategic philosophy. Natural complement to Meditations. |
+| 🟢 **CORE** | **Shakuntala** *(Kalidasa, Arthur W. Ryder trans.)* | Sanskrit (PD English) | "The Shakespeare of India." ~100 pages. Touching love story in natural English with rhyming verse. PG #16659. |
+| 🟢 **CORE** | **170 Chinese Poems** *(Arthur Waley, 1918)* | Chinese (PD English) | Beautiful, restrained translations on loneliness, nature, love, aging. Perfect for dipping into. PG #42290. |
+| 🟢 **CORE** | **West African Folk Tales** *(W.H. Barker & C. Sinclair, 1917)* | West African (PD English) | Anansi trickster stories — lively and universally appealing. Adds African representation. PG #66923. |
+| 🟡 **SEEK** | **Panchatantra** *(Arthur W. Ryder trans., 1925)* | Sanskrit (PD English) | PD in US since 2021. "Aesop on steroids" — witty, cynical animal fables. Source URL not yet confirmed (not on PG; archive.org search needed). |
 | 🟡 **SEPARATE ZIM** | **Project Gutenberg Library** (Top 100 or subsets) | Various | Available from Kiwix. Variable size. |
+
+#### NC-licensed fiction (not in core ZIM — user-installable recommended additions)
+
+| Title | Author | Licence | Why recommended |
+|---|---|---|---|
+| *Little Brother* | Cory Doctorow | CC BY-NC-SA | NYT Bestseller YA techno-thriller; genuinely page-turning |
+| *Warbreaker* | Brandon Sanderson | CC BY-NC-ND | Outstanding epic fantasy from one of the genre's biggest names |
+| *Blindsight* | Peter Watts | CC BY-NC-SA | Hugo-nominated hard SF; demanding but brilliant |
+
+*Note: No CC0 or CC BY fiction of professional quality was found in any catalogue. Every quality CC novel uses NC variants. The core ZIMs will always be pre-1930 public domain literature.*
 
 ### Medical — `MComz-Survival.zim`
 
@@ -163,9 +179,12 @@ All literature items are **Public Domain** via Standard Ebooks or Project Gutenb
 | 🟡 **SEEK PERMISSION** | **Where Women Have No Doctor** *(Hesperian)* | Hesperian Open Copyright (same) | Not in core ZIM (NC). Clinical companion to Where There Is No Doctor, covering women's health in resource-limited settings. Same contact. |
 | 🟡 **SEEK PERMISSION** | **A Book for Midwives** *(Hesperian)* | Hesperian Open Copyright (same) | Not in core ZIM (NC). Same contact. |
 | 🟡 **SEEK PERMISSION** | **Health Actions for Women** *(Hesperian)* | Hesperian Open Copyright (same) | Not in core ZIM (NC). Same contact. |
-| 🟢 **CORE** | **SOF Medical Handbook** *(US DoD)* | Public Domain (US Gov) | Trauma stabilisation and clinical dosages. Note: assumes relatively rapid medevac access — gap exists for prolonged remote care scenarios (5+ days). |
+| 🟢 **CORE** | **The Ship's Medicine Chest and Medical Aid at Sea** *(US PHS, 2003)* | Public Domain (US Gov) | Prolonged medical care for non-doctors — fills the critical gap between first aid and the SOF Handbook. Written for "intelligent laypeople" managing illness and injury weeks from port. Covers ongoing patient monitoring, nursing care, childbirth, mental health, communicable diseases. [archive.org](https://archive.org/details/gov.law.usphs.ships.2003). |
+| 🟢 **CORE** | **FM 4-25.11 First Aid** *(US Army, 2002)* | Public Domain (US Gov) | Comprehensive illustrated first aid; most chapters fully applicable to civilians. Complements the SOF Handbook at the basic care level. [archive.org](https://archive.org/details/FM4-25.11). |
+| 🟢 **CORE** | **HSE INDG347: Basic First Aid at Work** *(UK HSE)* | Crown Copyright / OGL v3.0 | Two-page quick-reference card: CPR, bleeding, burns, fractures. UK complement to FM 4-25.11. [hse.gov.uk](https://www.hse.gov.uk/pubns/indg347.pdf). |
+| 🟢 **CORE** | **SOF Medical Handbook** *(US DoD)* | Public Domain (US Gov) | Trauma stabilisation and clinical dosages for trained Special Operations medics. 600+ pages including field surgery and pharmacology — the most comprehensive reference in the library for those with medical training. |
 | 🟡 **SEEK PERMISSION** | **WHO Guidelines for Drinking-Water Quality** *(4th ed., WHO)* | CC BY-NC-SA 3.0 IGO | Not in core ZIM (NC). Essential water safety reference. Contact WHO copyright for permission. |
-| 🟡 **SEEK PERMISSION** | **Ship Captain's Medical Guide** *(UK MCA, 22nd ed.)* | OGL v3.0 (verify — 22nd ed. was on GOV.UK before withdrawal) | The 23rd/24th editions contain third-party IP and are published by TSO, which explicitly prohibits redistribution. The older 22nd edition was previously freely available under OGL on GOV.UK. **Action:** Source an archived 22nd edition and verify its OGL status. If confirmed, include. This fills a critical gap: the SOF Handbook assumes medevac access; the SCMG is designed for prolonged care at sea without medical professionals. |
+| 🟡 **SEEK** | **Ship Captain's Medical Guide** *(UK MCA, 22nd ed., 1999)* | Crown Copyright, OGL v3.0 (likely — see notes) | The 22nd edition was published on GOV.UK under the default OGL footer without stated exceptions; OGL is perpetual and irrevocable — withdrawal does not revoke the licence. The 23rd/24th editions contain third-party IP (explicitly stated in MIN 718) and cannot be redistributed. The 22nd edition appears eligible. **Action:** Locate archived 22nd edition PDF and confirm no third-party IP in copyright page. This complements Ship's Medicine Chest with the UK maritime perspective. |
 | 🟢 **DOWNLOADED** | **WikiMed Mini (English)** | CC BY-SA 4.0 | ~400 MB. Plain-language first aid and drug information. Downloaded by the MComzOS Ansible playbook from Kiwix's library — not built by this project. |
 | 🟡 **SEPARATE ZIM** | **WikiMed (English, full)** | CC BY-SA 4.0 | ~2.2 GB. Clinical references for trained professionals. Available from Kiwix. |
 
@@ -221,12 +240,13 @@ All literature items are **Public Domain** via Standard Ebooks or Project Gutenb
 | Status | Title & Author | Licence | Notes |
 |---|---|---|---|
 | 🟡 **SEEK PERMISSION** | **WHO Guidelines for Drinking-Water Quality** *(4th ed.)* | CC BY-NC-SA 3.0 IGO | Not in core ZIM (NC). See Medical section. Cross-listed for discoverability. |
-| 🟡 **SEEK PERMISSION** | **WHO Guidelines for Safe Use of Wastewater, Excreta and Greywater** *(Vols 1–4)* | CC BY-NC-SA 3.0 IGO (verify) | Not in core ZIM (NC). Covers wastewater reuse in agriculture/aquaculture — critical for long-term Sustainable Survival. |
-| 🟡 **SEEK PERMISSION** | **WHO Sanitation Safety Planning** *(2nd ed.)* | CC BY-NC-SA 3.0 IGO (verify) | Not in core ZIM (NC). Systematic approach to managing sanitation risks. |
-| 🟡 **SEEK PERMISSION** | **Sphere Handbook** *(4th ed., 2018)* | Verify terms (freely available PDF at spherestandards.org) | Not in core ZIM pending licence check. Definitive humanitarian standards covering WASH, shelter, food, health. **Action:** Check redistribution licence on spherestandards.org. |
-| 🟡 **SEEK PERMISSION** | **Oxfam WASH Technical Briefing Notes** (selected set) | Verify Oxfam terms | Not in core ZIM pending licence check. Practical field guides on water treatment, hand-dug wells, spring protection, drainage, sanitation. Available as free PDFs from oxfamwash.org. **Action:** Contact Oxfam to verify redistribution terms for bundling. |
-| 🟢 **CORE** | **On the Mode of Communication of Cholera** *(John Snow, 1855)* | Public Domain (copyright expired) | Historic but practically useful text on waterborne disease transmission. Foundational to understanding why water quality matters. |
-| 🟢 **CORE** | **Excreta Disposal for Rural Areas and Small Communities** *(Wagner & Lanoix, WHO, 1958)* | Public Domain (copyright expired, 1958 WHO publication) | Practical sanitation guidance for rural communities. Verify PD status given WHO publication. |
+| 🟢 **CORE** | **EPA Emergency Disinfection of Drinking Water** *(US EPA)* | Public Domain (US Gov) | Two-page quick reference covering bleach, calcium hypochlorite, and iodine disinfection methods. [epa.gov PDF](https://www.epa.gov/sites/default/files/2017-09/documents/emergency_disinfection_of_drinking_water_sept2017.pdf). |
+| 🟡 **SEEK** | **CDC: Making Water Safe in an Emergency** *(CDC)* | Public Domain (US Gov) | The clearest layperson water treatment guide available: boiling, bleach, SODIS, filtration. **Action:** Confirm current PDF download URL (CDC.gov page exists but direct PDF link needs verification). |
+| 🟡 **SEEK PERMISSION** | **WEDC Guides** *(selected titles, WEDC/Loughborough)* | **Contradictory** — collection document claims CC BY 4.0; individual Figshare repository entries show CC BY-NC-ND 4.0 | If CC BY 4.0 confirmed, becomes the cornerstone of the WASH section — illustrated, practical, written for field workers without engineering backgrounds. Covers household water treatment, latrine construction, spring protection, drainage, well digging. **Action:** Email Rod Shaw at WEDC/Loughborough to confirm which licence applies. |
+| 🟡 **SEEK PERMISSION** | **WHO Guidelines for Safe Use of Wastewater, Excreta and Greywater** *(Vols 1–4, 2006)* | **All Rights Reserved** (pre-2016 WHO policy — NOT CC-licensed) | Not in core ZIM. Published 10 years before WHO adopted its CC policy. Traditional copyright retained. |
+| 🟡 **SEEK PERMISSION** | **WHO Sanitation Safety Planning** *(2nd ed., 2022)* | CC BY-NC-SA 3.0 IGO | Not in core ZIM (NC). Post-2016 WHO policy. |
+| 🔴 **EXCLUDED** | **Sphere Handbook** *(4th ed., 2018)* | Custom copyright: free for educational use; online distribution requires written permission | Verified via spherestandards.org/intellectual-property/. Other Sphere resources are CC BY 4.0 but the Handbook itself is restricted. Contact Sphere Association to seek permission. |
+| 🟡 **SEEK PERMISSION** | **Oxfam WASH Technical Briefing Notes** (selected set) | All Rights Reserved (Oxfam GB) | Practical field guides on water treatment, hand-dug wells, spring protection, drainage. **Action:** Contact policyandpractice@oxfam.org.uk — these are among the most practically useful WASH resources; permission seems plausible given Oxfam's humanitarian mandate. |
 | 🟢 **CORE** | **CD3WD selected content** (water purification, basic sanitation, basic construction) | Public Domain / various open | Selected PDFs from CD3WD collection, bundled as-is into the ZIM as downloadable PDFs. The collection consists of scanned 1980s–90s technical documents — programmatic PDF-to-HTML conversion produces unreadable output and manual conversion is not feasible. Kiwix serves non-HTML files as downloads; users open them in their device's PDF viewer. |
 
 *Martin's full water engineering bibliography (7 Zotero collections, ~150 items) has been assessed. Commercial textbooks (Metcalf & Eddy, Twort's, White's Handbook, etc.) are excluded as copyrighted. The WHO publications, Sphere Handbook, and Oxfam WASH resources are the highest-value candidates pending licence verification. See Overnight Instructions for the detailed Zotero workflow.*
@@ -247,7 +267,8 @@ All literature items are **Public Domain** via Standard Ebooks or Project Gutenb
 |---|---|---|---|
 | 🟡 **SEPARATE ZIM** | **Wikipedia (English)** | CC BY-SA 4.0 | ~110 GB. Available from Kiwix. |
 | 🟡 **SEPARATE ZIM** | **WikiMed (English, full)** | CC BY-SA 4.0 | ~2.2 GB. Available from Kiwix. |
-| 🟡 **SEPARATE ZIM** | **USDA Home Canning Guide** | Public Domain (US Gov) | Requires specific pressure equipment. |
+| 🟡 **SEEK** | **USDA Complete Guide to Home Canning** *(2015 rev.)* | Public Domain (US Gov) | Definitive food preservation manual: canning, pickling, fermenting, altitude adjustments. Direct PDF URL not yet confirmed; see nchfp.uga.edu. |
+| 🟡 **SEPARATE ZIM** | **Appropedia** *(agriculture content)* | CC BY-SA 4.0 | Already available as a Kiwix ZIM. Composting, food preservation, small-scale irrigation, permaculture. |
 
 ---
 
@@ -257,7 +278,10 @@ All literature items are **Public Domain** via Standard Ebooks or Project Gutenb
 
 | Title | Reason |
 |---|---|
-| **Ship Captain's Medical Guide** *(23rd/24th ed.)* | TSO copyright; contains third-party IP; redistribution explicitly prohibited. 22nd edition being investigated as alternative (see Medical section). |
+| **Ship Captain's Medical Guide** *(23rd/24th ed.)* | TSO copyright; contains third-party IP; redistribution explicitly prohibited (stated in MIN 718). 22nd edition under investigation as alternative (see Medical section). |
+| **Excreta Disposal for Rural Areas** *(Wagner & Lanoix, WHO, 1958)* | WHO retains copyright on all publications regardless of age — WHO is an international organisation with its own IP regime, not subject to any public domain rule. Pre-2016 WHO works were published under traditional All Rights Reserved. Content also superseded by WEDC Guides. |
+| **On the Mode of Communication of Cholera** *(John Snow, 1855)* | Public domain but zero practical emergency value. Dense Victorian epidemiological prose (grade 16+); the core insight (cholera spreads via water) is stated in the opening paragraph of every modern WASH guide. Historical interest only. |
+| **Sphere Handbook** *(4th ed., 2018)* | Custom copyright: free for educational use but online distribution requires written permission from Sphere Association. Contact spherestandards.org to seek permission. |
 | **FM 3-05.70 / ATP 3-50.21** *(US Army)* | Combat evasion and military rescue focus. Excluded under Sustainable Survival principles — content serves military extraction scenarios, not community resilience. |
 | **SAS Survival Handbook** *(J. Wiseman)* **and similar** | Strictly copyrighted. No redistribution rights. This exclusion applies to all commercially published survival handbooks without explicit open licensing (e.g. Bushcraft 101, Build the Perfect Bug Out Bag, etc.). |
 | **"Survivor Library" ZIM** *(Community)* | ~250 GB exceeds hardware limits; rendering issues on low-power ARM devices. |
@@ -272,9 +296,9 @@ All literature items are **Public Domain** via Standard Ebooks or Project Gutenb
 | Area | Gap | Candidate solutions |
 |---|---|---|
 | **Prolonged remote medical care** | SOF Handbook assumes medevac access. No current text covers 5+ day isolated medical management. | Ship Captain's Medical Guide (22nd ed. under investigation); WHO emergency surgery guides (licence TBC). |
-| **Agriculture and food preservation** | No seed saving, permaculture, or food preservation guides. | USDA Canning Guide (🟡 as separate ZIM); seek PD/CC guides on seed saving and basic agriculture. |
-| **Water and sanitation** | Core gap — critical for Sustainable Survival. | WHO GDWQ (🟡 SEEK PERMISSION); CD3WD selections (🟢); Martin's library assessment pending. |
-| **Non-Western literature** | Library is heavily Western/Anglophone. | Arabian Nights added. Seeking further PD translations of quality non-Western classics that are accessible and engaging. |
+| **Agriculture and food preservation** | No seed saving, permaculture, or food preservation guides in core image. | USDA Complete Guide to Home Canning (🟡 — URL TBC); USDA Farmers' Bulletins (PD, UNT Digital Library — curate a selection); Appropedia ZIM (CC BY-SA). |
+| **Water and sanitation** | Virtually all WASH publications use NC licences. US Gov sources (EPA, CDC) are thin. WEDC Guides would fill this gap if CC BY 4.0 is confirmed. | EPA disinfection guide (🟢 CORE); CDC making water safe (🟡 URL TBC); WEDC Guides (🟡 licence verification pending). |
+| **Non-Western literature** | Now substantially addressed. Six Tier 1 non-Western texts added: Rubáiyát, Art of War, Shakuntala, 170 Chinese Poems, West African Folk Tales, and Panchatantra (URL TBC). | Tier 2: Journey to the West (*Monkey*, Waley 1942) if US PD confirmed; condensed Ramayana (R.C. Dutt); Gulistan (Saadi). |
 | **Modern literature** | All literature is pre-1930. Very little modern fiction exists under CC0 or equivalent open licences. | Continue monitoring Unglue.it and similar platforms for quality CC-licensed fiction. |
 | **Disability accessibility** | No resources for assisting individuals with disabilities in off-grid scenarios. | Seek PD or CC-licensed guides. |
 | **Basic first aid (non-military)** | SOF Handbook is written for Special Operations medics. | Scouting for Boys (added) covers basic first aid. Seek a more comprehensive PD civilian first aid text. |
@@ -302,9 +326,10 @@ All literature items are **Public Domain** via Standard Ebooks or Project Gutenb
 | 5 | **DND Canada** | Down But Not Out, Basic Cold Weather Training | copyright.droitdauteur@forces.gc.ca | Commercial redistribution permission. "Down But Not Out" (1978) enters PD end of 2028. |
 | 6 | **TSO / UK MCA** | Ship Captain's Medical Guide | customer.services@tso.co.uk | Redistribution permission for 23rd/24th ed. Also: source archived 22nd edition and verify OGL status. |
 | 7 | **Al-Furqan / Book of Signs Foundation** | The Clear Quran (Dr. Mustafa Khattab) | theclearquran.org | Redistribution permission for OS bundling. |
-| 8 | **WHO** | GDWQ (4th ed.), Wastewater Guidelines (Vols 1–4), Sanitation Safety Planning | who.int/copyright | Confirm non-commercial OS bundling is acceptable for all WHO publications. Single request covering multiple titles. |
-| 9 | **Sphere Association** | Sphere Handbook (4th ed.) | spherestandards.org | Verify redistribution licence for OS bundling. |
-| 10 | **Oxfam** | WASH Technical Briefing Notes (selected set) | oxfamwash.org or Oxfam GB permissions | Verify redistribution terms for bundling free PDFs in an OS image. |
+| 8 | **WHO** | GDWQ (4th ed.), Sanitation Safety Planning | who.int/copyright | Confirm non-commercial OS bundling is acceptable. Note: Wastewater Guidelines (2006) are All Rights Reserved — separate request needed. Single request covering other titles. |
+| 9 | **Sphere Association** | Sphere Handbook (4th ed.) | spherestandards.org/contact | Confirmed custom copyright. Request permission for non-commercial educational OS bundling. |
+| 10 | **Oxfam** | WASH Technical Briefing Notes (selected set) | policyandpractice@oxfam.org.uk | Confirmed All Rights Reserved. Request redistribution permission for non-commercial OS image. |
+| 11 | **WEDC / Loughborough** | WEDC Guides (selected titles) | Rod Shaw at Loughborough University | Urgent: resolve licence contradiction — collection document says CC BY 4.0, but individual Figshare items show CC BY-NC-ND 4.0. If CC BY 4.0 is confirmed, these become the cornerstone of the WASH section. |
 
 ---
 
@@ -343,3 +368,4 @@ All literature items are **Public Domain** via Standard Ebooks or Project Gutenb
 | v0.0.1 | 2026-04-10 | Initial draft produced with Gemini 2.5 Pro and Grok review. |
 | v0.0.2 | 2026-04-10 | Comprehensive revision incorporating review by ChatGPT, Le Chat (Mistral), DeepSeek, Perplexity, Copilot, and Claude. Licence verification via web research. NC-licensed items policy clarified. Ship Captain's Medical Guide 22nd ed. investigation added. Hesperian licence corrected from "CC BY-NC-SA 4.0" to "Hesperian Open Copyright". Berean Bible confirmed Public Domain. Yusuf Ali Quran clarified to 1934 text. Licence definitions standardised and moved to appendix. Disclaimers added. Category naming standardised. "Morale management" replaced with "psychological resilience". Status labels made self-explanatory. ZIM architecture clarified (three core ZIMs + user-added). Regional ZIM strategy added. Format strategy (HTML-first) documented. Thematic dashboard navigation noted. Geographic balance statement added. Translation/localisation invitation added. Side-by-side translation goal added. Arabian Nights and Scouting for Boys added. WikiMed Mini moved to CORE. CD3WD integration approach clarified. Mathematical tables excluded. Action Items table with contacts. Gaps and future work section. NC licence implications for ZIM licensing noted. Overnight refinement instructions produced. |
 | v0.0.3 | 2026-04-10 | Three fixes from Gemini 2.5 Pro review: WikiMed Mini added to Medical table as 🟢 DOWNLOADED (was described in prose but absent from table). CD3WD strategy corrected from "convert to HTML" to "bundle as-is PDF downloads" (scanned 1980s–90s docs; automated conversion produces unreadable output). Where Women Have No Doctor (Hesperian) added to Medical table and Action Items (clinical companion to Where There Is No Doctor; distinct from Health Actions for Women). |
+| v0.0.4 | 2026-04-09 | Implementing recommendations from RESULTS_DEEP_RESEARCH.md (Claude Deep Research audit). Key changes: (1) Wagner & Lanoix moved to EXCLUDED — WHO retains copyright on all publications regardless of age; was never public domain. (2) John Snow moved to EXCLUDED — zero practical emergency value; dense Victorian prose. (3) WHO Wastewater/Excreta/Greywater Guidelines (2006) licence corrected from "CC BY-NC-SA (verify)" to "All Rights Reserved" — published 10 years before WHO adopted CC policy. (4) Sphere Handbook moved from SEEK PERMISSION to EXCLUDED with seek action — custom copyright confirmed, online distribution requires written permission. (5) Medical: Ship's Medicine Chest (US PHS 2003) and FM 4-25.11 First Aid added as CORE; HSE INDG347 added as CORE. SOF Handbook notes updated to clarify audience (trained medics). Ship Captain's Medical Guide 22nd ed. status updated to reflect OGL assessment. (6) Water/Sanitation: EPA Emergency Disinfection added as CORE; CDC Making Water Safe added as SEEK (URL TBC); WEDC Guides added as SEEK PERMISSION with licence contradiction noted. (7) Literature: Six Tier 1 non-Western texts added as CORE — Rubáiyát (FitzGerald), Art of War (Giles), Shakuntala (Ryder), 170 Chinese Poems (Waley), West African Folk Tales, Panchatantra (URL TBC). NC-licensed fiction section added. (8) Gaps section updated. (9) Action Items: WEDC added; WHO, Sphere, Oxfam entries updated with confirmed licence status and contacts. |
