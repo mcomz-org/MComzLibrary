@@ -188,6 +188,7 @@ PYEOF
     --creator="MComzLibrary contributors" \
     --publisher="mcomz-org" \
     --name="mcomz_en_${category}" \
+    --withFullTextIndex \
     "$build_dir" \
     "$DIST/${zim_name}.zim"
 

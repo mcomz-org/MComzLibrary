@@ -112,9 +112,9 @@ dl "$SOURCES/literature/winnie-the-pooh.epub" \
 dl "$SOURCES/literature/aesops-fables.html" \
    "https://www.gutenberg.org/files/21/21-h/21-h.htm"
 
-# The Arabian Nights (Andrew Lang, 1898) — PG #1264
+# The Arabian Nights (Andrew Lang, 1898) — PG #128
 dl "$SOURCES/literature/arabian-nights-lang.html" \
-   "https://www.gutenberg.org/files/1264/1264-h/1264-h.htm"
+   "https://www.gutenberg.org/files/128/128-h/128-h.htm"
 
 # Scouting for Boys (Baden-Powell, 1908) — PG #65993
 dl "$SOURCES/literature/scouting-for-boys.html" \
