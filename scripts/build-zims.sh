@@ -4,15 +4,17 @@
 # Prerequisites: zim-tools (zimwriterfs), pandoc
 # Run scripts/download-sources.sh first.
 #
-# Source texts become single self-contained HTML files (via pandoc for EPUBs).
-# PDFs are bundled as downloadable files within the ZIM.
-# Each ZIM has a generated index.html as its main page.
+# Each ZIM's welcome page is a pandoc rendering of docs/intros/INTRO_<CAT>.md,
+# which carries the links-table that readers use to open the texts.
+# EPUB sources are converted to single self-contained HTML via pandoc.
+# PDFs are bundled alongside HTML at the top level of each ZIM.
 
 set -euo pipefail
 
 SOURCES="${MCOMZ_SOURCES_DIR:-sources}"
 BUILD="build"
 DIST="dist"
+INTROS="docs/intros"
 
 # ── Dependency check ──────────────────────────────────────────────────────────
 for cmd in zimwriterfs pandoc; do
@@ -42,20 +44,16 @@ epub_to_html() {
     }
 }
 
-# Prettify a filename slug into a display title.
-# "king-james-version" → "King James Version"
-slug_to_title() {
-  echo "$1" | tr '-' ' ' | sed 's/\b./\u&/g'
-}
-
-# Generate the main index.html for a ZIM.
-generate_index() {
-  local build_dir="$1" title="$2" description="$3"
+# Render an intro .md as the ZIM's welcome index.html, wrapped in house styling.
+generate_index_from_md() {
+  local intro_md="$1" build_dir="$2" title="$3"
   local out="$build_dir/index.html"
-  echo "  Generating index.html"
+  echo "  Rendering $(basename "$intro_md") → index.html"
 
-  {
-    cat <<HTML
+  local body
+  body=$(pandoc "$intro_md" --from=gfm --to=html5)
+
+  cat > "$out" <<HTML
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -63,75 +61,47 @@ generate_index() {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>${title}</title>
   <style>
-    body { font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-           max-width: 800px; margin: 2rem auto; padding: 0 1.5rem;
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+           max-width: 820px; margin: 2rem auto; padding: 0 1.5rem;
            background: #fff; color: #222; line-height: 1.6; }
     h1 { border-bottom: 2px solid #333; padding-bottom: .5rem; }
-    h2 { margin-top: 1.5rem; color: #444; font-size: 1rem;
-         text-transform: uppercase; letter-spacing: .05em; }
-    ul { list-style: none; padding: 0; }
-    li { margin: .4rem 0; }
-    a { color: #0066cc; text-decoration: none; font-size: 1.05rem; }
+    h2 { margin-top: 2rem; color: #333; }
+    h3 { margin-top: 1.5rem; color: #444; }
+    a { color: #0066cc; text-decoration: none; }
     a:hover { text-decoration: underline; }
-    .pdf::before { content: "📄 "; }
-    footer { margin-top: 2rem; padding-top: 1rem; border-top: 1px solid #ccc;
-             font-size: .8rem; color: #888; }
+    table { border-collapse: collapse; margin: 1rem 0; width: 100%;
+            font-size: .95rem; }
+    th, td { border: 1px solid #ddd; padding: .5rem .75rem; text-align: left;
+             vertical-align: top; }
+    th { background: #f4f4f4; }
+    blockquote { border-left: 3px solid #ccc; margin: 1rem 0;
+                 padding: .25rem 1rem; color: #555; background: #fafafa; }
+    code { background: #f4f4f4; padding: .1rem .3rem; border-radius: 3px;
+           font-size: .9em; }
+    footer { margin-top: 3rem; padding-top: 1rem; border-top: 1px solid #ccc;
+             font-size: .85rem; color: #888; }
   </style>
 </head>
 <body>
-<h1>${title}</h1>
-<p>${description}</p>
-HTML
-
-    # HTML books
-    local book_items=()
-    for f in "$build_dir"/*.html; do
-      [[ "$(basename "$f")" == "index.html" ]] && continue
-      [[ -f "$f" ]] || continue
-      local name label
-      name=$(basename "$f" .html)
-      label=$(slug_to_title "$name")
-      book_items+=("  <li><a href=\"${name}.html\">${label}</a></li>")
-    done
-    if [[ ${#book_items[@]} -gt 0 ]]; then
-      echo "<h2>Texts</h2><ul>"
-      printf '%s\n' "${book_items[@]}"
-      echo "</ul>"
-    fi
-
-    # PDFs
-    if compgen -G "$build_dir/downloads/*.pdf" >/dev/null 2>&1; then
-      echo "<h2>Reference Documents</h2>"
-      echo "<ul>"
-      for pdf in "$build_dir/downloads/"*.pdf; do
-        [[ -f "$pdf" ]] || continue
-        local pname plabel
-        pname=$(basename "$pdf")
-        plabel=$(slug_to_title "${pname%.pdf}")
-        echo "  <li class=\"pdf\"><a href=\"downloads/${pname}\">${plabel}</a></li>"
-      done
-      echo "</ul>"
-    fi
-
-    cat <<HTML
+${body}
 <footer>
   Part of <a href="https://github.com/mcomz-org/MComzLibrary">MComzLibrary</a>
   — offline knowledge for MComzOS.
 </footer>
-</body></html>
+</body>
+</html>
 HTML
-  } > "$out"
 }
 
 # ── Build one ZIM ─────────────────────────────────────────────────────────────
 build_zim() {
-  local category="$1" zim_name="$2" title="$3" description="$4"
+  local category="$1" zim_name="$2" title="$3" description="$4" intro_md="$5"
   local src="$SOURCES/$category"
   local build_dir="$BUILD/$category"
 
   echo ""
   echo "=== Building ${zim_name}.zim ==="
-  mkdir -p "$build_dir/downloads"
+  mkdir -p "$build_dir"
 
   # Convert EPUBs → self-contained HTML
   shopt -s nullglob
@@ -147,17 +117,17 @@ build_zim() {
     echo "  copy  $(basename "$html")"
   done
 
-  # Copy PDFs into downloads/
+  # Copy PDFs alongside HTML at the top level
   for pdf in "$src"/*.pdf; do
-    local dest="$build_dir/downloads/$(basename "$pdf")"
+    local dest="$build_dir/$(basename "$pdf")"
     [[ -f "$dest" ]] && { echo "  skip  $(basename "$pdf")"; continue; }
     cp "$pdf" "$dest"
     echo "  pdf   $(basename "$pdf")"
   done
   shopt -u nullglob
 
-  # Generate index
-  generate_index "$build_dir" "$title" "$description"
+  # Render the intro .md as the welcome page
+  generate_index_from_md "$intro_md" "$build_dir" "$title"
 
   # Generate a minimal 48x48 PNG illustration (required by zimwriterfs)
   python3 - "$build_dir/illustration.png" <<'PYEOF'
@@ -201,15 +171,18 @@ PYEOF
 
 build_zim "spiritual" "MComz-Scriptures" \
   "MComz Scriptures" \
-  "Religious and philosophical texts from seven major world traditions"
+  "Religious and philosophical texts from seven major world traditions" \
+  "$INTROS/INTRO_SCRIPTURES.md"
 
 build_zim "literature" "MComz-Literature" \
   "MComz Literature" \
-  "Classic literature for morale, education, and younger readers"
+  "Classic literature for morale, education, and younger readers" \
+  "$INTROS/INTRO_LITERATURE.md"
 
 build_zim "survival" "MComz-Survival" \
   "MComz Survival Reference" \
-  "Medical, survival, civil defence, communications, and engineering reference"
+  "Medical, survival, civil defence, communications, and engineering reference" \
+  "$INTROS/INTRO_SURVIVAL.md"
 
 echo ""
 echo "=== All ZIMs built ==="
