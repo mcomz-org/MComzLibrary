@@ -38,12 +38,36 @@ dl() {
 echo "=== Scriptures ==="
 
 # Berean Standard Bible — CC0 (public domain dedication 30 Apr 2023)
+# Modern English, Protestant 66-book canon. Does not include the Apocrypha
+# (see World English Bible below for the Ecumenical/Deuterocanonical edition).
 dl "$SOURCES/spiritual/berean-standard-bible.epub" \
    "https://bereanbible.com/bsb.epub"
 
-# King James Version — PG #10
+# King James Version — PG #10 — Public Domain
 dl "$SOURCES/spiritual/king-james-version.html" \
    "https://www.gutenberg.org/files/10/10-h/10-h.htm"
+
+# World English Bible, Ecumenical Edition (with Apocrypha/Deuterocanon) — Public Domain
+# Modern English translation including the Catholic/Orthodox Deuterocanonical books
+# (Tobit, Judith, Wisdom, Sirach, Baruch, 1–2 Maccabees, etc.). Published by ebible.org.
+# Covers the ~50% of world Christianity (Catholic + Orthodox) whose canon is not fully
+# represented by the Protestant 66-book BSB or KJV.
+dl "$SOURCES/spiritual/world-english-bible-with-apocrypha.epub" \
+   "https://ebible.org/epub/eng-web.epub"
+
+# The Book of Mormon (1830 ed.) — PG #17 — Public Domain
+# Latter-day Saints: ~17 million adherents globally (~0.25% of world). Pew classifies
+# LDS under "Christians" but the BoM is a distinct scripture. Included because it meets
+# all three criteria: single primary scripture, PD English source, >0.1% of world.
+dl "$SOURCES/spiritual/book-of-mormon.html" \
+   "https://www.gutenberg.org/files/17/17-h/17-h.htm"
+
+# The Book of Enoch / 1 Enoch (R.H. Charles trans., 1912) — PG #77935 — Public Domain
+# Canonical scripture of Ethiopian Orthodox Christianity (~50 million adherents); not
+# included in the Catholic/Orthodox Deuterocanon that the WEB Ecumenical Edition carries.
+# Influenced Second Temple Judaism and early Christianity.
+dl "$SOURCES/spiritual/book-of-enoch-charles.html" \
+   "https://www.gutenberg.org/files/77935/77935-h/77935-h.htm"
 
 # The Quran — PG #16955 (Yusuf Ali, Pickthall, and Shakir translations side by side)
 # Includes the Yusuf Ali 1934 text alongside two other respected translations.
@@ -54,6 +78,12 @@ dl "$SOURCES/spiritual/quran-three-translations.html" \
 dl "$SOURCES/spiritual/bhagavad-gita-arnold.html" \
    "https://www.gutenberg.org/files/2388/2388-h/2388-h.htm"
 
+# The Upanishads (F. Max Müller trans., Sacred Books of the East) — PG #3283 — Public Domain
+# The foundational Hindu śruti tier. Classical Hindu theology regards the Upanishads as
+# more central than the Gita; the Gita is more widely read, so both are included.
+dl "$SOURCES/spiritual/upanishads-muller.html" \
+   "https://www.gutenberg.org/cache/epub/3283/pg3283-images.html"
+
 # Tao Te Ching (James Legge trans.) — PG #216
 dl "$SOURCES/spiritual/tao-te-ching-legge.html" \
    "https://www.gutenberg.org/files/216/216-h/216-h.htm"
@@ -62,6 +92,19 @@ dl "$SOURCES/spiritual/tao-te-ching-legge.html" \
 # PDF (not available as HTML from a reliable public source)
 dl "$SOURCES/spiritual/tanakh-jps-1917.pdf" \
    "https://jps.org/wp-content/uploads/2015/10/Tanakh1917.pdf"
+
+# The Dhammapada (F. Max Müller trans., 1881) — PG #2017 — Public Domain
+# Representative text for Buddhism (~7% of world, per Pew 2010). Müller's translation
+# is archaic but definitively PD; will be upgraded to Buddharakkhita translation once
+# BPS grants permission (see docs/RATIONALE.md Action Items).
+dl "$SOURCES/spiritual/dhammapada-muller.html" \
+   "https://www.gutenberg.org/cache/epub/2017/pg2017-images.html"
+
+# The Analects of Confucius (James Legge trans.) — PG #3330 — Public Domain
+# Central text of the Confucian ethical tradition that underpins Chinese folk
+# religion (~6% of world, per Pew 2010) alongside Buddhism and Taoism.
+dl "$SOURCES/spiritual/analects-of-confucius-legge.html" \
+   "https://www.gutenberg.org/cache/epub/3330/pg3330-images.html"
 
 # ── LITERATURE ────────────────────────────────────────────────────────────────
 echo "=== Literature ==="
