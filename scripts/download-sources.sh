@@ -125,6 +125,42 @@ dl "$SOURCES/literature/count-of-monte-cristo.epub" \
 dl "$SOURCES/literature/pride-and-prejudice.epub" \
    "https://standardebooks.org/ebooks/jane-austen/pride-and-prejudice/downloads/jane-austen_pride-and-prejudice.epub"
 
+# Frankenstein (Mary Shelley, 1818) — Standard Ebooks
+dl "$SOURCES/literature/frankenstein.epub" \
+   "https://standardebooks.org/ebooks/mary-shelley/frankenstein/downloads/mary-shelley_frankenstein.epub"
+
+# Jane Eyre (Charlotte Brontë, 1847) — Standard Ebooks
+dl "$SOURCES/literature/jane-eyre.epub" \
+   "https://standardebooks.org/ebooks/charlotte-bronte/jane-eyre/downloads/charlotte-bronte_jane-eyre.epub"
+
+# Wuthering Heights (Emily Brontë, 1847) — Standard Ebooks
+dl "$SOURCES/literature/wuthering-heights.epub" \
+   "https://standardebooks.org/ebooks/emily-bronte/wuthering-heights/downloads/emily-bronte_wuthering-heights.epub"
+
+# Little Women (Louisa May Alcott, 1868) — Standard Ebooks
+dl "$SOURCES/literature/little-women.epub" \
+   "https://standardebooks.org/ebooks/louisa-may-alcott/little-women/downloads/louisa-may-alcott_little-women.epub"
+
+# Middlemarch (George Eliot, 1871) — Standard Ebooks
+dl "$SOURCES/literature/middlemarch.epub" \
+   "https://standardebooks.org/ebooks/george-eliot/middlemarch/downloads/george-eliot_middlemarch.epub"
+
+# The Awakening (Kate Chopin, 1899) — Standard Ebooks
+dl "$SOURCES/literature/the-awakening.epub" \
+   "https://standardebooks.org/ebooks/kate-chopin/the-awakening/downloads/kate-chopin_the-awakening.epub"
+
+# Narrative of the Life of Frederick Douglass (1845) — Standard Ebooks
+dl "$SOURCES/literature/narrative-of-the-life-of-frederick-douglass.epub" \
+   "https://standardebooks.org/ebooks/frederick-douglass/narrative-of-the-life-of-frederick-douglass/downloads/frederick-douglass_narrative-of-the-life-of-frederick-douglass.epub"
+
+# Up from Slavery (Booker T. Washington, 1901) — Standard Ebooks
+dl "$SOURCES/literature/up-from-slavery.epub" \
+   "https://standardebooks.org/ebooks/booker-t-washington/up-from-slavery/downloads/booker-t-washington_up-from-slavery.epub"
+
+# The Souls of Black Folk (W.E.B. Du Bois, 1903) — Standard Ebooks
+dl "$SOURCES/literature/the-souls-of-black-folk.epub" \
+   "https://standardebooks.org/ebooks/w-e-b-du-bois/the-souls-of-black-folk/downloads/w-e-b-du-bois_the-souls-of-black-folk.epub"
+
 # Meditations (Marcus Aurelius, George Long trans.) — Standard Ebooks
 dl "$SOURCES/literature/meditations.epub" \
    "https://standardebooks.org/ebooks/marcus-aurelius/meditations/george-long/downloads/marcus-aurelius_meditations_george-long.epub"
